@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 // import Img3 from '../assets/img3.jpg';
 // import Img4 from '../assets/img4.jpg';
 
+
 const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect }) => {
   const [images, setImages] = useState<string[]>([]);
 
@@ -17,6 +18,7 @@ const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect
           return `${data.urls.raw}&w=300&h=300&fit=crop`;
         })
       );
+      
       setImages(response);
     };
     fetchImages();
