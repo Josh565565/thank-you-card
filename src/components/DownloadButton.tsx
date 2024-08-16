@@ -4,14 +4,20 @@ const DownloadButton: React.FC<{ canvasRef: React.RefObject<HTMLCanvasElement> }
   const downloadImage = () => {
     const canvas = canvasRef.current;
     if (canvas) {
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = 'thank-you-card.png';
-      link.click();
+      setTimeout(() => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'thank-you-card.png';
+        link.click();
+      }, 100);
     }
   };
 
-  return <button onClick={downloadImage} className="bg-blue-500 text-white px-4 py-2 rounded">Download Image</button>;
+  return (
+    <button onClick={downloadImage} className="bg-blue-500 text-white px-4 py-2 rounded">
+      Download Image
+    </button>
+  );
 };
 
 export default DownloadButton;

@@ -4,27 +4,40 @@ import React, { useEffect, useState } from 'react';
 // import Img3 from '../assets/img3.jpg';
 // import Img4 from '../assets/img4.jpg';
 
-
 const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect }) => {
   const [images, setImages] = useState<string[]>([]);
 
   useEffect(() => {
     const fetchImages = async () => {
-        const apiKey = process.env.UNSPLASH_API_KEY;
+      const apiKey = process.env.NINJAS_KEY;
+      const category = 'nature';
+      const width = 500;
+      const height = 600;
+      
       const response = await Promise.all(
         Array.from({ length: 4 }, async () => {
-          const res = await fetch(`https://api.unsplash.com/photos/random?client_id=${apiKey}`);
-          const data = await res.json();
-          return `${data.urls.raw}&w=300&h=300&fit=crop`;
+          const res = await fetch(`https://api.api-ninjas.com/v1/randomimage?category=${category}&width=${width}&height=${height}`, {
+            headers: {
+              'X-Api-Key': apiKey!,
+              'Accept': 'image/jpg'
+            }
+          });
+          
+          if (res.ok) {
+            return URL.createObjectURL(await res.blob());
+          } else {
+            console.error("Error fetching image:", res.status, res.statusText);
+            return '';
+          }
         })
       );
-      
-      setImages(response);
+
+      setImages(response.filter((url) => url !== ''));
     };
     fetchImages();
   }, []);
 
-//   Use the randomimages array instead of the images array in the map function if you want to use the local images and also incase if the unsplash api limit is reached or if you don't want have API key
+  //   Use the randomimages array instead of the images array in the map function if you want to use the local images and also incase if the unsplash api limit is reached or if you don't want have API key
 // to use the local images, uncomment the import statements at the top of the file and also uncomment the randomimages array below
 
 //   const randomimages = [
@@ -32,7 +45,7 @@ const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect
 //     Img2,
 //     Img3,
 //     Img4
-//   ]
+//   ];
 
   return (
     <div>
