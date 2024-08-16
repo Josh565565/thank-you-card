@@ -11,6 +11,7 @@ const DownloadButton: React.FC<{ canvasRef: React.RefObject<HTMLCanvasElement> }
         link.click();
       }, 100);
     }
+    
   };
 
   return (
