@@ -37,8 +37,8 @@ const CardCanvas: React.FC<Props> = ({ canvasRef, imageUrl, userName }) => {
           ctx.font = `${Math.floor(canvas.width / 20)}px Arial`;
           ctx.textAlign = 'center';
           ctx.fillStyle = 'white';
-          ctx.fillText('Thank You', canvas.width / 2, canvas.height * 0.1);
-          ctx.fillText(userName, canvas.width / 2, canvas.height * 0.9);
+          ctx.fillText('Thank You', canvas.width / 2, canvas.height * 0.15);
+          ctx.fillText(userName, canvas.width / 2, canvas.height * 0.88);
         };
       }
     }
