@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Img1 from '../assets/img1.jpg';
-import Img2 from '../assets/img2.jpg';
-import Img3 from '../assets/img3.jpg';
-import Img4 from '../assets/img4.jpg';
+// import Img1 from '../assets/img1.jpg';
+// import Img2 from '../assets/img2.jpg';
+// import Img3 from '../assets/img3.jpg';
+// import Img4 from '../assets/img4.jpg';
 
 const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect }) => {
   const [images, setImages] = useState<string[]>([]);
@@ -23,13 +23,14 @@ const ImageSelector: React.FC<{ onSelect: (url: string) => void }> = ({ onSelect
   }, []);
 
 //   Use the randomimages array instead of the images array in the map function if you want to use the local images and also incase if the unsplash api limit is reached or if you don't want have API key
+// to use the local images, uncomment the import statements at the top of the file and also uncomment the randomimages array below
 
-  const randomimages = [
-    Img1,
-    Img2,
-    Img3,
-    Img4
-  ]
+//   const randomimages = [
+//     Img1,
+//     Img2,
+//     Img3,
+//     Img4
+//   ]
 
   return (
     <div>
